@@ -1,10 +1,11 @@
 var AllSkills = React.createClass({
+
   handleDelete(id) {
     this.props.handleDelete(id);
   },
 
-  handleEdit(){
-    console.log('you are in edit');
+  onUpdate(skill){
+    this.props.handleUpdate(skill);
   },
 
   render(){
@@ -13,7 +14,7 @@ var AllSkills = React.createClass({
       <div key={skill.id}>
         <Skill skill={skill}
           handleDelete={this.handleDelete.bind(this, skill.id)}
-          handleEdit={this.handleEdit} />
+          handleUpdate={this.onUpdate} />
       </div>
       )
   });
