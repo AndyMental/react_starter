@@ -10,7 +10,8 @@ var Body = React.createClass({
   },
 
   handelSubmit(skill){
-    console.log(skill);
+    var newState = this.state.skills.concat(skill);
+    this.setState({ skills: newState })
   },
 
   render(){
