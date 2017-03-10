@@ -1,6 +1,6 @@
 var AllSkills = React.createClass({
-  handleDelete(){
-    this.props.handelSubmit(id);
+  handleDelete(id) {
+    this.props.handleDelete(id);
   },
 
   render(){

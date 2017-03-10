@@ -1,8 +1,6 @@
 var Body = React.createClass({
   getInitialState() {
-    return {
-      skills: []
-    }
+    return { skills: [] }
   },
 
   componentDidMount() {
@@ -14,15 +12,30 @@ var Body = React.createClass({
     this.setState({ skills: newState })
   },
 
-  handleDelete(){
-    console.log('in delete skill');
+  handleDelete(id) {
+    $.ajax({
+      url: `/api/v1/skills/${id}`,
+      type: 'DELETE',
+      success: () => {
+        this.removeSkillFromDOM(id);
+      }
+    });
+  },
+
+  removeSkillFromDOM(id) {
+    let newSkills = this.state.skills.filter((skill) => {
+      return skill.id != id;
+    });
+
+    this.setState({ skills: newSkills });
   },
 
   render(){
     return(
       <div>
         <NewSkill handelSubmit={this.handelSubmit} />
-        <AllSkills skills={this.state.skills} />
+        <AllSkills skills={this.state.skills}
+                   handleDelete={this.handleDelete} />
       </div>
     )
   }
