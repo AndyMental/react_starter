@@ -14,6 +14,10 @@ var Body = React.createClass({
     this.setState({ skills: newState })
   },
 
+  handleDelete(){
+    console.log('in delete skill');
+  },
+
   render(){
     return(
       <div>
