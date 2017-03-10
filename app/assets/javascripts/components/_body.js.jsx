@@ -9,10 +9,14 @@ var Body = React.createClass({
     $.getJSON('/api/v1/skills.json', (response) => { this.setState({ skills: response }) });
   },
 
+  handelSubmit(skill){
+    console.log(skill);
+  },
+
   render(){
     return(
       <div>
-        <NewSkill />
+        <NewSkill handelSubmit={this.handelSubmit} />
         <AllSkills skills={this.state.skills} />
       </div>
     )
